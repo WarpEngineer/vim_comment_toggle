@@ -1,7 +1,7 @@
 " python.vim    : contains a function to toggle comments for python files
-" Version       : 1.0
+" Version       : 1.1
 " Maintainer    : WarpEngineer <https://github.com/WarpEngineer>
-" Last Modified : 2016-10-07
+" Last Modified : 2016-10-08
 " License       : MIT
 
 if exists("ld_pt_comment_toggle")
@@ -12,10 +12,10 @@ let ld_pt_comment_toggle=1
 function! ToggleComment()
   " comment a range of lines
   let l = getline(".")
-  if l[0] != "#"
-	  call setline(line("."), "#".l)
+  if l =~ '^\s*#\+' 
+	  call setline(line("."), substitute(l, '^\(\s*\)\(#\+\)\(.\+\)$', '\1\3', ''))
   else
-	  call setline(line("."), l[1:])
+	  call setline(line("."), "#".l)
   endif
 endfunction
 

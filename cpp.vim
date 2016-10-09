@@ -1,7 +1,7 @@
 " cpp.vim       : contains a function to toggle comments for c++ files
-" Version       : 1.0
+" Version       : 1.1
 " Maintainer    : WarpEngineer <https://github.com/WarpEngineer>
-" Last Modified : 2016-10-07
+" Last Modified : 2016-10-08
 " License       : MIT
 
 if exists("ld_cpp_comment_toggle")
@@ -12,8 +12,8 @@ let ld_cpp_comment_toggle=1
 function! ToggleComment()
   " comment a range of lines
   let l = getline(".")
-  if l[0] == "/" && l[1] == "/"
-	  call setline(line("."), l[2:])
+  if l =~ '^\s*\/\/' 
+	  call setline(line("."), substitute(l, '^\(\s*\)\(\/\/\)\(.\+\)$', '\1\3', ''))
   else
 	  call setline(line("."), "//".l)
   endif
