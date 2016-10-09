@@ -16,10 +16,10 @@ endif
 function! ToggleComment()
   " comment a range of lines
   let l = getline(".")
-  if l[0] == "/" && l[1] == "*"
-	  call setline(line("."), l[3:-3])
+  if l =~ '^\s*\/\*.\+\*\/' 
+	  call setline(line("."), substitute(l, '^\(\s*\)\(\/\*\)\(.\+\)\(\*\/\)$', '\1\3', ''))
   else
-	  call setline(line("."), "/* " . l . " */")
+	  call setline(line("."), "/*" . l . "*/")
   endif
 endfunction
 
