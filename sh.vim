@@ -1,5 +1,5 @@
 " python.vim    : contains a function to toggle comments for shell scripts
-" Version       : 1.1.1
+" Version       : 1.1.2
 " Maintainer    : WarpEngineer <https://github.com/WarpEngineer>
 " Last Modified : 2016-11-19
 " License       : MIT
