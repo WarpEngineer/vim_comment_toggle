@@ -1,12 +1,19 @@
 " python.vim    : contains a function to toggle comments for python files
-" Version       : 1.1
+" Version       : 1.1.1
 " Maintainer    : WarpEngineer <https://github.com/WarpEngineer>
-" Last Modified : 2016-10-08
+" Last Modified : 2016-11-09
 " License       : MIT
 
 if exists("ld_pt_comment_toggle")
 	finish " stop loading
 endif
+if exists("ld_comment_toggle")
+	echohl WarningMsg
+	echon " **** Comment Toggle already loaded...Skipping **** "
+	echohl None
+	finish " stop loading
+endif
+let ld_comment_toggle=1
 let ld_pt_comment_toggle=1
 
 function! ToggleComment()
